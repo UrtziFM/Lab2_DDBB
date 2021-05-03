@@ -1,30 +1,28 @@
-public class Node { // this is node to use as reference in the double list
-    private String countryName; // country element
-    private Node nextElement; // next element
-    private Node preElement; // previous element
-
-    public Node(String countryName){
-        this.countryName = countryName;
+public class Node {
+ 
+    //Atributes
+    private String country;
+    private Node next; //Pointer to next element
+    //Constructor
+    public Node(String country, Node next) {
+        this.country = country;
+        this.next = next;
     }
-    public String getCountry(){ //this method get country name
-        return countryName;
+    //Methods
+    public String getCountry() {
+        return country;
     }
-    public void setCountry(String countryName){ //this method set a new country
-        this.countryName = countryName;
+    public void setCountry(String country) {
+        this.country = country;
     }
-    public Node getNextElement(){  //this method get next element in the list
-        return nextElement;
+    public Node getNext() {
+        return next;
     }
-    public void setNextElement(Node nextElement){ //this method set the next element in the list
-        this.nextElement = nextElement;
+    public void setNext(Node next) {
+        this.next = next;
     }
-    public Node getPreElement(){ //this method get previous element in the list
-        return preElement;
+    public String showPila() {
+        return country ;
     }
-    public void setPreElement(Node preElement){ //this method set the previous element in the list
-        this.preElement = preElement;
-    }
-    public String showList() {
-        return countryName;
-    }
+ 
 }

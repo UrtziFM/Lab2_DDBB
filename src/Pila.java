@@ -1,70 +1,60 @@
+import javax.swing.JOptionPane;
+
 public class Pila {
-    //Atributos
-    private Node top; //Ultimo nodo que se ha incluido
-    private int size;
-    //Constructores
-    public String PilaDinamica() {
-        top = null; //No hay elementos
-        this.size = 0;
-        return null;
-    }
-    // Pila vacia
-    public boolean isEmpty() {
+
+    //Atributes
+    private Node top; //Last node included
+    private int size = 0;
+    
+    public boolean isEmpty() { // method to know if is empty
         return top == null;
     }
-    // Tamaño de la pila
-    public int size() {
-        return this.size;
-    }
-    // Devuelve el elemento que esta más arriba en la pila
-    public String top() {
-        if (isEmpty()) {
-            return null;
-        } else {
-            return top.getCountry();
-        }
-    }
-    // Saca y devuelve el elemento que mas arriba esta en la pila
-    public String pop() {
+    
+    public String pop() { // method to extract last element
         if (isEmpty()) {
             return null;
         } else {
             String country = top.getCountry();
-            Node aux = top.getNextElement();
-            top = null; //marco para borrar
-            top = aux; //actualizo el top
-            this.size--;
+            Node aux = top.getNext();
+            top = null; 
+            top = aux; 
+            this.size--; // counter
             return country;
         }
     }
-    //Mete un elemento a la pila
-    public String push(String country) {
- 
-        Node aux = new Node(country);
-        top = aux; //actualizo el top
-        this.size++;
+    
+    public String push(String country) { // method to include a new element 
+        Node aux = new Node(country, top);
+        top = aux; 
+        this.size++; //counter
         return aux.getCountry();
     }
-    // Devuelve el estado de la pila
-    public String toString() {
- 
+  
+    public String top() { // method to know last element included
         if (isEmpty()) {
-            return "La pila esta vacia";
+            System.out.printf("\n It is empty");
         } else {
- 
-            String resultado = "";
-            Node aux = top;
-            //Recorro la pila
-            while (aux != null) {
-                resultado += aux.toString();
-                aux = aux.getNextElement();
-            }
- 
-            System.out.println(resultado);
-            return resultado;
- 
+            System.out.printf("\n %s \n", top.getCountry());
         }
- 
+        return null;
     }
- 
+    public void printPila(){ //method to iterate in the list and print it
+        for (Node i = top; i != null; i = i.getNext()) {
+            System.out.printf("\n %s ", i.showPila());
+        }
+        System.out.println();
+    }
+    public void countPila() {
+        System.out.println("\n The size of the Pila is " + size);
+    }
+    public void validateCountry(){ // method to validate if a country is on the list
+        String texto =JOptionPane.showInputDialog("What country do you want to validate?");
+        for (Node i = top; i != null; i = i.getNext()) {
+            String countryName = i.showPila();
+            if(countryName.equals(texto)){
+                System.out.printf("This country is on the list \n");
+            }
+        }
+        System.out.println();
+    }
 }
